@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemple de Cookie</title>
+</head>
+<body>
+
+<h1>Création de Cookie en JavaScript</h1>
+<button onclick="creerCookie()">Créer un Cookie</button>
+
+<script>
+function creerCookie() {
+    var date = new Date();
+    date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000)); // Cookie expirera dans 7 jours
+    var expires = "expires=" + date.toUTCString();
+    document.cookie = "username=JohnDoe; " + expires + "; path=/";
+    alert("Cookie créé !");
+}
+</script>
+Coucou!
+
+</body>
+</html>
+
