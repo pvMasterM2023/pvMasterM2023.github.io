@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemple de Réutilisation de Cookie</title>
+</head>
+<body onload="afficherMessageBienvenue()">
+
+<h1>Utilisation de Cookie en JavaScript</h1>
+<button onclick="creerCookie()">Créer un Cookie</button>
+
+<script>
+function creerCookie() {
+    var date = new Date();
+    date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000)); // Cookie expirera dans 7 jours
+    var expires = "expires=" + date.toUTCString();
+    document.cookie = "username=JohnDoe; " + expires + "; path=/";
+    alert("Cookie créé !");
+}
+
+function lireCookie(nom) {
+    var nomCookie = nom + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(nomCookie) == 0) {
+            return c.substring(nomCookie.length, c.length);
+        }
+    }
+    return "";
+}
+
+function afficherMessageBienvenue() {
+    var user = lireCookie("username");
+    if (user != "") {
+        alert("Bienvenue à nouveau, " + user);
+    } else {
+        alert("Bienvenue sur notre site !");
+    }
+}
+</script>
+
+</body>
+</html>
+
