@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Changement de Style</title>
+</head>
+<body>
+
+<h1>Changer le Style de la Page</h1>
+
+<select id="styleSelector" onchange="changerStyle()">
+    <option value="lightblue">Bleu Clair</option>
+    <option value="lightgreen">Vert Clair</option>
+    <option value="lightpink">Rose Clair</option>
+    <option value="lightyellow">Jaune Clair</option>
+    <option value="white">Blanc</option>
+</select>
+
+<script>
+function changerStyle() {
+    var selectedStyle = document.getElementById('styleSelector').value;
+    document.body.style.backgroundColor = selectedStyle;
+}
+</script>
+
+</body>
+</html>
+
